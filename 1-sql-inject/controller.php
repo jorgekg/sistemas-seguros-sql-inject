@@ -1,6 +1,6 @@
 <?php
 try {
-  $conn = new PDO('mysql:host=127.0.0.1;dbname=trab', "root", "faccao12");
+  $conn = new PDO('mysql:host=127.0.0.1;dbname=trab', "root", "root");
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch(PDOException $e) {
     echo 'ERROR: ' . $e->getMessage();
@@ -13,4 +13,6 @@ $data = $conn->query("SELECT * FROM usuario WHERE email = '". $email ."' and sen
 
 if (!empty($data->fetchAll())) {
 	header("location: ok.php");
+} else {
+  header("location: login.html");
 }
